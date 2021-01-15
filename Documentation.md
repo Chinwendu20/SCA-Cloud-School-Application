@@ -19,7 +19,7 @@ In order to get the most of this application, the following requirements have to
 
 - Systems should also have python installed, python 3.5 or later
 
-## ## Usage Instruction
+## Usage Instruction
     
 -   Type  `https://github.com/Chinwendu20/SCA-Cloud-School-Application.git`  to clone the package
     
@@ -48,7 +48,6 @@ Don't hesitate to create issues and PRs for improving the cli tool. All contribu
 
 ##	License
 
-The MIT License
 
 Copyright (c) 2021 Ononiwu Maureen
 
