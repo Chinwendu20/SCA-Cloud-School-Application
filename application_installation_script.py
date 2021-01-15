@@ -4,7 +4,7 @@ import subprocess
 
 print('Hi there')
 #Dictionary mapping each operating system with its installation command
-Dictionary_of_Os_with_installation_command={ 'Darwin':[ 'port','install'], 'Linux':[ 'sudo','apt-get', 'install'],'Windows': ['choco','install']}
+Dictionary_of_Os_with_installation_command={ 'Darwin':[ 'brew','install'], 'Linux':[ 'sudo','apt-get', 'install'],'Windows': ['choco','install']}
 
 #Dictionary mapping each application with their package name used for installation
 Dictionary_of_applications_to_install={ 'node':'nodejs', 'curl':'curl', 'wget':'wget'}
@@ -41,14 +41,26 @@ def installing_apps(application):
 	#Calling the Fetching_installation_command_for_os to obtain installation command for system's operating system
 	installation_command_for_OS=Fetching_installation_command_for_OS()
 	
-	#Appending the application to be installed in to list of installation commands
-	installation_command_for_OS.append(Dictionary_of_applications_to_install[application])
+	
+	#Installing node in the Darwin system has a unique sequence of command
+	#Package name is 'node' instead of 'nodejs'
+	#Checking for such condtion so as to install properly on Darwin system
+	#Then, appending the application to be installed in to list of installation commands
+	if installation_command_for_OS == Dictionary_of_Os_with_installation_command['Darwin'] and application == 'node':
+		installation_command_for_OS.append(application)
+	else:
+		installation_command_for_OS.append(Dictionary_of_applications_to_install[application])
 
 	
 	print('Installing {} .....'.format(application))
 	
 	#Calling the installation command for the application
-	subprocess.run(installation_command_for_OS)		
+	subprocess.run(installation_command_for_OS)
+	
+	#Removing application from installation_command_for_OS
+	del installation_command_for_OS[len(installation_command_for_OS)-1]
+	
+			
 	
 
 def checking_if_apps_are_already_installed():
