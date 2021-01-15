@@ -78,12 +78,12 @@ def checking_if_apps_are_already_installed():
 			#Calling installing_apps() function to install application
 			installing_apps(application)
 
+if __name__=='__main__':
+	print('checking if system has required applications')
 
-print('checking if system has required applications')
-
-#Calling function to start the whole process
-checking_if_apps_are_already_installed()
-print('All done')
+	#Calling function to start the whole process
+	checking_if_apps_are_already_installed()
+	print('All done')
 
 
 
